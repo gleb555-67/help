@@ -17,14 +17,25 @@ def send_heh(message):
 #доп
 @bot.message_handler(commands=['help'])
 def send_welcome(message):
-    bot.reply_to(message, 'Привет! Вот список команд:/heh./help./hello./start !') 
+    bot.reply_to(message, 'Привет! Вот список команд:/heh./help./hello./start./password./emodji./coin !') 
+
 #пароль
-from bot_logic import gen_pass
+from bot_logic import gen_pass,gen_emodji, flip_coin  
 @bot.message_handler(commands=['password'])
 def send_welcome(message):
     bot.reply_to(message,gen_pass(10))
 
-# Запуск бота
+@bot.message_handler(commands=['emodji'])
+def send_emodji(message):
+    emodji = gen_emodji()
+    bot.reply_to(message, f"Вот эмоджи': {emodji}")
 
+@bot.message_handler(commands=['coin'])
+def send_coin(message):
+    coin = flip_coin()
+    bot.reply_to(message, f"Монетка выпала так: {coin}")
+
+# Запуск бота
 bot.polling()
+
 
