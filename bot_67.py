@@ -22,8 +22,9 @@ def send_welcome(message):
 from bot_logic import gen_pass
 @bot.message_handler(commands=['password'])
 def send_welcome(message):
-    gen_pass(10)
+    bot.reply_to(message,gen_pass(10))
 
 # Запуск бота
 
 bot.polling()
+
