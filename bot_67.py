@@ -18,6 +18,12 @@ def send_heh(message):
 @bot.message_handler(commands=['help'])
 def send_welcome(message):
     bot.reply_to(message, 'Привет! Вот список команд:/heh./help./hello./start !') 
+#пароль
+from bot_logic import gen_pass
+@bot.message_handler(commands=['password'])
+def send_welcome(message):
+    gen_pass(10)
 
 # Запуск бота
+
 bot.polling()
